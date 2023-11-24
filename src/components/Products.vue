@@ -26,9 +26,13 @@ const { products, isLoading, error } = storeToRefs(useProductStore());
           ></span>
           <SvgIcon :path="notification" />
         </button>
-        <button class="rounded-sm bg-white h-[54px] w-[52px]">
+        <button class="rounded-sm bg-white h-[54px] w-[52px] overflow-hidden">
           <figure>
-            <img src="src/assets/avatar.png" alt="avatar image" />
+            <img
+              class="rounded-sm"
+              src="https://avatars.githubusercontent.com/u/43463977?v=4"
+              alt="avatar image"
+            />
           </figure>
         </button>
       </div>
