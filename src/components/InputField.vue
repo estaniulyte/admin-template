@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SvgIcon from './SvgIcon.vue';
 
-const props = defineProps<{
+defineProps<{
   label?: string;
   iconPath?: string;
   placeholder: string;
@@ -11,7 +11,7 @@ const props = defineProps<{
 <template>
   <div class="flex flex-col space-y-4">
     <label
-      v-if="props.label"
+      v-if="label"
       for="first_name"
       class="text-black font-normal text-base"
       >{{ label }}</label
@@ -27,7 +27,7 @@ const props = defineProps<{
         :class="{
           'pl-[60px]': iconPath,
         }"
-        :placeholder="props.placeholder"
+        :placeholder="placeholder"
         required
       />
     </div>
