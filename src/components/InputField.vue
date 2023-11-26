@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import SvgIcon from './SvgIcon.vue';
 
+import { ref } from 'vue';
+
+const inputValue = ref('');
+
 defineProps<{
   label?: string;
   iconPath?: string;
   placeholder: string;
+  inputValue?: string;
+  onEnter: Function;
 }>();
 </script>
 
@@ -27,6 +33,8 @@ defineProps<{
         :class="{
           'pl-[60px]': iconPath,
         }"
+        v-model="inputValue"
+        @keyup.enter="() => onEnter(inputValue)"
         :placeholder="placeholder"
         required
       />
