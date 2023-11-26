@@ -11,12 +11,19 @@ import { notification } from '../config/iconPaths';
 import Button from './Button.vue';
 
 const { products, isLoading, error } = storeToRefs(useProductStore());
+
+const { setBrandFilter, setTitleFilter } = useProductStore();
 </script>
 
 <template>
   <div class="mx-1 mb-2 md:mx-3 md:mb-4 lg:mx-[40px] lg:mb-[33px]">
     <div class="flex justify-between mt-3 mb-8 md:mt-[56px] md:mb-[44px]">
-      <InputField class="w-2/3" placeholder="Search" :iconPath="search" />
+      <InputField
+        class="w-2/3"
+        placeholder="Search"
+        :iconPath="search"
+        :onEnter="(v: string) => console.log(v)"
+      />
       <div class="flex space-x-[20px]">
         <Button :notifications="true">
           <SvgIcon :path="notification" />
@@ -38,8 +45,16 @@ const { products, isLoading, error } = storeToRefs(useProductStore());
     <div
       class="grid gap-3 grid-colos-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-[34px]"
     >
-      <InputField placeholder="Enter Title" label="Title" />
-      <InputField placeholder="Enter Brand" label="Brand" />
+      <InputField
+        placeholder="Enter Title"
+        label="Title"
+        :onEnter="(v: string) => setTitleFilter(v)"
+      />
+      <InputField
+        placeholder="Enter Brand"
+        label="Brand"
+        :onEnter="(v: string) => setBrandFilter(v)"
+      />
     </div>
     <div v-if="isLoading">Loading...</div>
     <div v-else>
@@ -61,7 +76,7 @@ const { products, isLoading, error } = storeToRefs(useProductStore());
           </thead>
           <tbody class="space-y-[30px]">
             <tr
-              v-for="product in products?.products as Product[]"
+              v-for="product in products as Product[]"
               :key="product.id"
               class="h-[78px] border-1 border-b border-[#F2F2F2] text-black text-opacity-60"
             >
