@@ -10,9 +10,17 @@ export interface Product {
   rating: number;
 }
 
-export const useProducts = () =>
-  useData<{ products: Product[] }>('/products', {
-    params: { search: 'iphone' },
-  });
+export const useProducts = (params?: String[]) => {
+  const { data, isLoading, error } = useData<{ products: Product[] }>(
+    '/products',
+    params
+  );
+
+  return {
+    data,
+    isLoading,
+    error,
+  };
+};
 
 export const useProduct = (id: number) => useData<Product>('/products/' + id);
