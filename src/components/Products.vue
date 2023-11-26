@@ -8,25 +8,20 @@ import { search } from '../config/iconPaths';
 import { useProductStore } from '../stores/ProductsStore';
 import SvgIcon from './SvgIcon.vue';
 import { notification } from '../config/iconPaths';
+import Button from './Button.vue';
 
 const { products, isLoading, error } = storeToRefs(useProductStore());
 </script>
 
 <template>
-  <div class="mx-1 mb-2 md:mx-2 md:mb-4 lg:mx-[40px] lg:mb-[33px]">
-    <div class="flex justify-between mt-[56px] mb-[44px]">
-      <InputField placeholder="Search" :iconPath="search" />
+  <div class="mx-1 mb-2 md:mx-3 md:mb-4 lg:mx-[40px] lg:mb-[33px]">
+    <div class="flex justify-between mt-3 mb-8 md:mt-[56px] md:mb-[44px]">
+      <InputField class="w-2/3" placeholder="Search" :iconPath="search" />
       <div class="flex space-x-[20px]">
-        <button
-          class="flex rounded-sm bg-white h-[54px] w-[52px] relative items-center justify-center"
-        >
-          <span class="sr-only">Notifications</span>
-          <span
-            class="absolute top-0 right-0 inline-block w-[10px] h-[10px] transform translate-x-1/3 -translate-y-1/3 bg-accent-500 rounded-full"
-          ></span>
+        <Button :notifications="true">
           <SvgIcon :path="notification" />
-        </button>
-        <button class="rounded-sm bg-white h-[54px] w-[52px] overflow-hidden">
+        </Button>
+        <Button>
           <figure>
             <img
               class="rounded-sm"
@@ -34,7 +29,7 @@ const { products, isLoading, error } = storeToRefs(useProductStore());
               alt="avatar image"
             />
           </figure>
-        </button>
+        </Button>
       </div>
     </div>
     <h1 class="text-black font-medium text-2xl mb-[30px]">
