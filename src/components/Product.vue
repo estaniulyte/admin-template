@@ -14,12 +14,15 @@ const { data: product, isLoading, error } = useProduct(parseInt(id));
   <div v-else>
     <div v-if="error">Error: {{ error }}</div>
     <div v-else>
-      <h1 class="text-4xl uppercase">{{ product?.title }}</h1>
+      <p class="text-gray-500 text-sm">
+        Products &nbsp;&nbsp;>&nbsp;&nbsp;
+        <span class="capitalize">{{ product?.category }}</span>
+      </p>
+      <h1 class="mt-3 text-4xl uppercase">{{ product?.title }}</h1>
       <h2 class="text-xl">{{ product?.brand }}</h2>
       <span>${{ product?.price }}</span>
       <p>{{ product?.stock }} items in stock</p>
       <p>{{ product?.rating }} rating</p>
-      <p>{{ product?.category }}</p>
     </div>
   </div>
 </template>
