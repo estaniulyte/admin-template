@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { Product, useProducts } from '../utils/useProducts';
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 
 export const useProductStore = defineStore('ProductStore', () => {
   const searchQuery = ref<string>('');
