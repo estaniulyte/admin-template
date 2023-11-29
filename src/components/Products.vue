@@ -3,12 +3,8 @@ import { Product } from '../utils/useProducts';
 import InputField from './InputField.vue';
 import Checkbox from './Checkbox.vue';
 import { storeToRefs } from 'pinia';
-import { search } from '../config/iconPaths';
 
 import { useProductStore } from '../stores/ProductsStore';
-import SvgIcon from './SvgIcon.vue';
-import { notification } from '../config/iconPaths';
-import Button from './Button.vue';
 
 const { products, isLoading, error } = storeToRefs(useProductStore());
 
@@ -16,29 +12,7 @@ const { setBrandFilter, setTitleFilter } = useProductStore();
 </script>
 
 <template>
-  <div class="mx-1 mb-2 md:mx-3 md:mb-4 lg:mx-[40px] lg:mb-[33px]">
-    <div class="flex justify-between mt-3 mb-8 md:mt-[56px] md:mb-[44px]">
-      <InputField
-        class="w-2/3"
-        placeholder="Search"
-        :iconPath="search"
-        :onEnter="(v: string) => console.log(v)"
-      />
-      <div class="flex space-x-[20px]">
-        <Button :notifications="true">
-          <SvgIcon :path="notification" />
-        </Button>
-        <Button>
-          <figure>
-            <img
-              class="rounded-sm"
-              src="https://avatars.githubusercontent.com/u/43463977?v=4"
-              alt="avatar image"
-            />
-          </figure>
-        </Button>
-      </div>
-    </div>
+  <div>
     <h1 class="text-black font-medium text-2xl mb-[30px]">
       Products Information
     </h1>
